@@ -1,84 +1,155 @@
 # LLM Council
 
-> Run any high-stakes decision through 5 independent AI advisors, let them peer-review each other anonymously, and get a synthesized verdict — not just one AI's opinion.
+<p align="center">
+  <img src="./imagev1.png" alt="LLM Council Overview" width="100%" />
+</p>
 
-A Claude skill by [Aland Baban](https://tasiomind.dev).
+<p align="center">
+  <strong>Better decisions through structured disagreement.</strong>
+</p>
+
+<p align="center">
+  Run high-stakes decisions through 5 independent AI advisors, let them anonymously peer-review each other, and receive a synthesized verdict — not just a single AI opinion.
+</p>
 
 ---
 
-## The Problem
+## Why I Built This
 
-You ask one AI a question, you get one answer. That answer might be great or completely off. You have no way to tell because you only saw one perspective.
+Most AI answers sound convincing.
 
-**The LLM Council fixes this.**
+That’s the problem.
+
+The more I worked with LLMs, the more I noticed that AI is extremely good at producing answers that *feel right* while still being:
+- shallow,
+- biased,
+- overly agreeable,
+- or missing critical perspectives.
+
+Most models optimize for:
+- coherence,
+- politeness,
+- and “helpfulness”.
+
+But real decision-making needs:
+- disagreement,
+- pressure-testing,
+- conflicting perspectives,
+- execution realism,
+- and critical thinking.
+
+So I built **LLM Council**.
+
+Instead of generating one averaged answer, this system creates structured intellectual tension between multiple reasoning styles — then synthesizes the strongest insights into a final recommendation.
 
 ---
 
-## How It Works
+# How It Works
 
-```
+```text
 Your Question
      │
      ▼
 ┌─────────────────────────────────────────┐
 │         5 Independent Advisors          │
+│                                         │
 │  Contrarian · First Principles ·        │
 │  Expansionist · Outsider · Executor     │
 └─────────────────────────────────────────┘
      │
      ▼
 ┌─────────────────────────────────────────┐
-│      Anonymized Peer Review             │
-│  Each advisor reviews all others        │
-│  (responses labeled A–E, no names)      │
+│      Anonymous Peer Review              │
+│                                         │
+│  Advisors critique all responses        │
+│  anonymously (A–E, no identities)       │
 └─────────────────────────────────────────┘
      │
      ▼
 ┌─────────────────────────────────────────┐
 │         Chairman Synthesis              │
+│                                         │
 │  Agreements · Conflicts · Blind Spots   │
-│  → Clear Recommendation                 │
+│  → Final Recommendation                 │
 └─────────────────────────────────────────┘
 ```
 
 ---
 
-## The Five Advisors
+# The Five Advisors
 
-| Advisor | What They Do |
+| Advisor | Role |
 |---|---|
-| **The Contrarian** | Assumes a fatal flaw exists. Digs for what's wrong, what's missing, what will fail. |
-| **The First Principles Thinker** | Strips assumptions. Asks: *"What problem are we actually solving?"* Often concludes you're asking the wrong question. |
-| **The Expansionist** | Finds hidden upsides and adjacent opportunities everyone else is missing. |
-| **The Outsider** | Zero context, zero bias. Catches the "curse of knowledge" — things obvious to you but confusing to others. |
-| **The Executor** | Strictly practical. Asks: *"What do you do Monday morning?"* Flags ideas without a clear path to action. |
-
-**Built-in tensions that produce better answers:**
-- Contrarian vs. Expansionist → downside vs. upside
-- First Principles vs. Executor → rethink everything vs. just ship it
-- Outsider → keeps everyone grounded in reality
+| **The Contrarian** | Assumes the idea contains a fatal flaw. Searches aggressively for risks, weak assumptions, and failure modes. |
+| **The First Principles Thinker** | Rebuilds the problem from fundamentals. Challenges assumptions and often reframes the question entirely. |
+| **The Expansionist** | Focuses on leverage, upside, scale, and opportunities everyone else is ignoring. |
+| **The Outsider** | Operates without insider context or bias. Excellent at detecting confusion and “curse of knowledge” problems. |
+| **The Executor** | Focuses purely on practicality, speed, and execution. Asks: *“What actually happens Monday morning?”* |
 
 ---
 
-## When to Use It
+# Built-In Tensions
 
-**Good council questions** (high stakes, real tradeoffs):
-- *"Should I take the job offer or stay and negotiate?"*
-- *"Which architecture makes more sense for this system?"*
-- *"I'm thinking of pivoting from X to Y — am I crazy?"*
-- *"Here's my pitch deck. What's weak?"*
-- *"Should I hire someone or build the automation first?"*
+The system intentionally creates productive conflict.
 
-**Bad council questions** (don't waste it on these):
-- *"What's the capital of France?"* — one right answer
-- *"Write me a function that does X"* — creation task, not a decision
-- *"Summarize this article"* — processing task, not judgment
+| Tension | Purpose |
+|---|---|
+| Contrarian vs Expansionist | Risk vs upside |
+| First Principles vs Executor | Rethink vs execute |
+| Outsider vs Everyone | Fresh perspective vs insider assumptions |
+
+This tension is what makes the outputs stronger than a single-model response.
 
 ---
 
-## Trigger Phrases
+# When To Use It
 
-Say any of these to activate the council:
+## Great Use Cases
+
+High-stakes decisions with real tradeoffs:
+
+- Startup pivots
+- Product strategy
+- Architecture decisions
+- Hiring decisions
+- Pricing strategy
+- Build vs buy
+- Rewrite vs refactor
+- GTM strategy
+- AI system design
+- High-risk execution decisions
+
+### Example Questions
+
+- *“Should I pivot my SaaS from X to Y?”*
+- *“Which architecture is more future-proof?”*
+- *“Should I hire first or automate first?”*
+- *“Which positioning strategy is strongest?”*
+- *“Am I solving the wrong problem entirely?”*
+
+---
+
+## Bad Use Cases
+
+Do NOT use the council for:
+- factual lookups,
+- trivial technical questions,
+- simple coding tasks,
+- summarization,
+- low-stakes decisions.
+
+Examples:
+- *“What’s the capital of France?”*
+- *“Write a sorting function.”*
+- *“Summarize this article.”*
+
+The council is designed for judgment, not retrieval.
+
+---
+
+# Trigger Phrases
+
+Use any of these:
 
 | Trigger | Type |
 |---|---|
@@ -95,51 +166,129 @@ Say any of these to activate the council:
 
 ---
 
-## Output Format
+# Example Output
 
-```markdown
-## Council Verdict: {Topic}
+```md
+# Council Verdict: SaaS Pivot
 
-### Where the Council Agrees
-- High-confidence points multiple advisors converged on independently
+## Where the Council Agrees
+- The current positioning is too broad.
+- The biggest bottleneck is distribution, not engineering.
 
-### Where the Council Clashes
-- Genuine disagreements with both sides presented
+## Where the Council Clashes
+- Some advisors recommend doubling down.
+- Others recommend narrowing aggressively.
 
-### Blind Spots the Council Caught
-- Insights that only emerged during peer review
+## Blind Spots the Council Caught
+- The user is optimizing for technical elegance instead of speed.
 
-### The Recommendation
-A clear, direct recommendation. Not "it depends."
+## The Recommendation
+Do not pivot the entire product.
+Narrow the ICP first and validate demand before rebuilding anything.
 
-### The One Thing to Do First
-**A single concrete next step.**
+## The One Thing to Do First
+Interview 10 paying users this week.
 ```
 
 ---
 
-## Installation
+# Key Design Decisions
 
-This is a Claude skill (`.skill` file) for use with [Claude's skills system](https://docs.claude.com).
+## Anonymous Peer Review
 
-1. Download `llm-council.skill`
-2. Install it in your Claude environment
-3. Use any trigger phrase when you have a real decision to make
+Advisor outputs are relabeled as A–E before review.
 
----
+This prevents:
+- authority bias,
+- persona bias,
+- and positional influence.
 
-## Key Design Decisions
-
-**Anonymized peer review** — Advisor responses are relabeled A–E before review to eliminate identity and positional bias. Advisors don't know whose work they're critiquing.
-
-**Chairman autonomy** — The Chairman can override the majority. If 4/5 advisors agree but the dissenter has the stronger logical argument, the Chairman sides with the dissenter and explains why.
-
-**Parallel execution** — All 5 advisors run simultaneously. No sequential bleed-through where early responses influence later ones.
-
-**No hedging** — Each advisor leans fully into their assigned lens. The other advisors cover the angles they're not covering. That's the point.
+The advisors critique arguments — not identities.
 
 ---
 
-## Credits
+## Chairman Independence
 
-Built by [Aland Baban](https://tasiomind.dev).
+The Chairman can override the majority.
+
+If one dissenting advisor presents a fundamentally stronger argument than the other four, the Chairman should side with the dissenter and explain why.
+
+Consensus is not automatically correct.
+
+---
+
+## Parallel Execution
+
+All advisors run simultaneously.
+
+This prevents:
+- sequential contamination,
+- convergence bias,
+- and early-response influence.
+
+---
+
+## No Hedging
+
+Each advisor commits fully to its assigned thinking style.
+
+The system works because perspectives collide instead of blending together into generic “balanced” output.
+
+---
+
+# Installation
+
+This project is designed as a Claude skill.
+
+## Setup
+
+1. Clone this repository
+
+```bash
+git clone https://github.com/amariwan/LLM-Council.git
+```
+
+2. Install the skill into your Claude environment
+
+3. Use a trigger phrase whenever you want to pressure-test an important decision
+
+---
+
+# Philosophy
+
+The goal is not consensus.
+
+The goal is clarity.
+
+LLM Council replaces:
+> “one plausible AI answer”
+
+with:
+> “a structured reasoning process with disagreement, critique, and synthesis.”
+
+---
+
+# Roadmap
+
+Planned ideas:
+- configurable advisor types,
+- memory-aware councils,
+- domain-specialized councils,
+- visual council graphs,
+- confidence scoring,
+- multi-round debate systems,
+- autonomous evidence gathering.
+
+---
+
+# Contributing
+
+Contributions, experiments, and forks are welcome.
+
+If you build custom advisor sets or improve the reasoning workflow, open a PR.
+
+---
+
+# License
+
+MIT
